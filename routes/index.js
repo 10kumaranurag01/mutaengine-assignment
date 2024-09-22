@@ -10,7 +10,7 @@ import stripeWebhook from '../controllers/stripeWebhookController.js';
 const rootRouter = express.Router();
 
 // Routes
-rootRouter.use('/auth', recaptcha, authRoutes);
+rootRouter.use('/auth', authRoutes);
 rootRouter.use('/auth/google', googleAuthRoutes);
 rootRouter.use('/payments', authMiddleware, paymentRoutes);
 rootRouter.use('/stripe-webhook', stripeWebhook)

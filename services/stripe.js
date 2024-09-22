@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 
 export const createPaymentIntent = async (req, res) => {
-    const { amount } = req.body; // Assuming amount is sent in the request body
+    const { amount, email } = req.body; // Assuming amount is sent in the request body
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
     try {
@@ -10,7 +10,7 @@ export const createPaymentIntent = async (req, res) => {
             amount, // Use the amount from the request body
             currency: 'usd',
             payment_method_types: ['card'],
-            receipt_email: 'customer@example.com',
+            receipt_email: email,
         });
 
         // Send back the client secret to the client
